@@ -1,0 +1,23 @@
+name: 'Deployer Action'
+description: 'Package artifacts into a bundle and send them to your server.'
+inputs:
+  ssh_key:
+    required: true
+  ssh_host:
+    required: true
+  artifacts:
+    required: true
+  server_dir:
+    required: true
+  deploy_url:
+    required: false
+    default: null
+  temp_dir:
+    required: false
+    default: '.deployer-action'
+outputs:
+  bundle_name:
+    description: 'The name of the bundle that was sent to the server.'
+runs:
+  using: 'node16'
+  main: 'src/index.js'
