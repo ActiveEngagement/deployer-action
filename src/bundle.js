@@ -2,6 +2,7 @@ const path = require('path');
 const exec = require('@actions/exec');
 const github = require('@actions/github');
 const fs = require('fs');
+const manifest = require('./manifest');
 
 module.exports = async function(artifacts, from, to) {
     const bundleName = `${Date.now()}-${github.context.sha}`;
@@ -13,6 +14,9 @@ module.exports = async function(artifacts, from, to) {
         const toPath = path.join(bundlePath, name);
         await exec.exec(`cp -r ${fromPath} ${toPath}`);
     }
+
+    const manifestPath = path.join(bundlePath, 'manifest.json');
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest()));
 
     return { bundlePath, bundleName };
 };
