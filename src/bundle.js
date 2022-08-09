@@ -4,7 +4,7 @@ const github = require('@actions/github');
 const fs = require('fs');
 
 module.exports = async function(artifacts, from, to) {
-    const bundleName = github.context.sha;
+    const bundleName = `${Date.now()}-${github.context.sha}`;
     const bundlePath = path.join(to, bundleName);
     fs.mkdirSync(bundlePath);
 
