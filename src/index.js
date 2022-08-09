@@ -13,12 +13,12 @@ async function main() {
         const appDir = process.cwd();
 
         const artifacts = inputs.artifacts;
-        const { bundlePath, bundleFile } = await bundleArtifacts(artifacts, appDir, archivingDir);
+        const { bundlePath, bundleFile, bundleName } = await bundleArtifacts(artifacts, appDir, archivingDir);
 
         const keyFile = createKeyFile(tempDir);
         await sendBundle(bundlePath, bundleFile, keyFile);
 
-        deploy();
+        deploy(bundleName);
     }
     catch (error) {
         core.error(error);

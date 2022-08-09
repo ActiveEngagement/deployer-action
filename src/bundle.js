@@ -18,7 +18,7 @@ async function bundleArtifacts(artifacts, dir) {
 
     await exec.exec(`tar -cvzf ${bundlePath} -C ${dir} ${filesString}`);
 
-    return { bundlePath, bundleFile: bundleFileName };
+    return { bundlePath, bundleFile: bundleFileName, bundleName };
 }
 
 module.exports = async function(artifacts, from, to) {
