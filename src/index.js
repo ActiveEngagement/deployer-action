@@ -9,14 +9,14 @@ const deploy = require('./deploy');
 
 async function main() {
     try {
-        const { tempDir, archivingDir } = setupDirs();
+        const { tempDir } = setupDirs();
         const appDir = process.cwd();
 
         const artifacts = inputs.artifacts;
-        const { bundlePath, bundleFile, bundleName } = await bundleArtifacts(artifacts, appDir, archivingDir);
+        const { bundlePath, bundleName } = await bundleArtifacts(artifacts, appDir, tempDir);
 
         const keyFile = createKeyFile(tempDir);
-        await sendBundle(bundlePath, bundleFile, keyFile);
+        await sendBundle(bundlePath, bundleName, keyFile);
 
         deploy(bundleName);
     }
