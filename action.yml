@@ -7,7 +7,7 @@ inputs:
     required: true
   artifacts:
     required: true
-  server_dir:
+  destination:
     required: true
   deploy_url:
     required: false
