@@ -8,7 +8,7 @@ module.exports = async function(bundlePath, bundleName, keyFile) {
     const destinationPath = path.join(destinationDir, bundleName);
 
     // Try to ensure that the destination directory exists.
-    await exec.exec(`ssh -T -i ${keyFile} "mkdir -p ${destinationDir}`);
+    await exec.exec(`ssh -T -i ${keyFile} -p StrictHostKeyChecking=no ${host} "mkdir -p ${destinationDir}`);
 
     // Send the bundle.
     await exec.exec(`scp -r -i ${keyFile} -o StrictHostKeyChecking=no ${bundlePath} ${host}:${destinationPath}`);
