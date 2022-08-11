@@ -6,8 +6,7 @@ function toTimestamp(timeString) {
     return Math.round(Date.parse(timeString) / 1000);
 }
 
-module.exports = function(env, version) {
-    core.info(JSON.stringify(github.context));
+module.exports = function() {
     return {
         commit: github.context.sha,
         initiator: github.context.actor,

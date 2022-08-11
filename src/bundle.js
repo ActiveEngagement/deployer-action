@@ -16,7 +16,7 @@ module.exports = async function(artifacts, from, to) {
     }
 
     const manifestPath = path.join(bundlePath, 'manifest.json');
-    fs.writeFileSync(manifestPath, JSON.stringify(manifest()));
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest(), null, 2));
 
     return { bundlePath, bundleName };
 };
