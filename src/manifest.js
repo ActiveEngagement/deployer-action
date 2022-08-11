@@ -1,6 +1,8 @@
 const github = require('@actions/github');
+const core = require('@actions/core');
 
 module.exports = function() {
+    core.info(github.context);
     return {
         commit: github.context.sha,
         initiator: github.context.triggering_actor,
