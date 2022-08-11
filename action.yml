@@ -15,6 +15,12 @@ inputs:
   temp_dir:
     required: false
     default: '.deployer-action'
+  env:
+    required: false
+    default: null
+  version:
+    require: false
+    default: null
 outputs:
   bundle_name:
     description: 'The name of the bundle that was sent to the server.'

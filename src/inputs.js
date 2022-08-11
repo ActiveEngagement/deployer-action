@@ -22,5 +22,7 @@ module.exports = {
     host: getRequiredInput('ssh_host'),
     key: getRequiredInput('ssh_key'),
     destinationDir: getRequiredInput('destination'),
-    deployUrl: getInput('deploy_url')
+    deployUrl: getInput('deploy_url'),
+    env: getInput('env'),
+    version: getInput('version')
 };
