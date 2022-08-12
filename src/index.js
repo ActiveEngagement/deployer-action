@@ -18,7 +18,9 @@ async function main() {
         const keyFile = createKeyFile(tempDir);
         await sendBundle(bundlePath, bundleName, keyFile);
 
-        deploy(bundleName);
+        deploy();
+
+        core.setOutput('bundle_name', bundleName);
     }
     catch (error) {
         core.error(error);
