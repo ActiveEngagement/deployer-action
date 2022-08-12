@@ -19,6 +19,8 @@ async function main() {
         await sendBundle(bundlePath, bundleName, keyFile);
 
         deploy();
+
+        core.setOutput('bundle_name', bundleName);
     }
     catch (error) {
         core.error(error);
