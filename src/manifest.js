@@ -8,8 +8,10 @@ module.exports = function() {
         env: inputs.env,
         version: inputs.version,
         bundled_at: Math.round(Date.now() / 1000),
-        committed_at: Math.round(Date.parse(github.context.payload.head_commit.timestamp) / 1000),
-        git_ref: github.context.ref,
-        ci_job: github.context.job
+        extra: {
+            committed_at: Math.round(Date.parse(github.context.payload.head_commit.timestamp) / 1000),
+            git_ref: github.context.ref,
+            ci_job: github.context.job
+        }
     };
 }
