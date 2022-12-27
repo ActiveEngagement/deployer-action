@@ -4,6 +4,7 @@ const inputs = require('./inputs');
 const setupDirs = require('./setup');
 const bundleArtifacts = require('./bundle');
 const createKeyFile = require('./create_key');
+const destroyKeyFile = require('./destroy_key');
 const sendBundle = require('./send');
 const deploy = require('./deploy');
 
@@ -17,6 +18,7 @@ async function main() {
 
         const keyFile = createKeyFile(tempDir);
         await sendBundle(bundlePath, bundleName, keyFile);
+        destroyKeyFile(tempDir);
 
         deploy();
 
