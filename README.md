@@ -120,6 +120,28 @@ This input must be a string containing a JSON object of artifact rules. These ru
 
 For example, in a typical asset-building scenario, assets might be output to "public/build/*". In that case, an `artifacts` input of `{ "assets": "public/build" }` would create an "assets" artifact in the bundle containing the "public/build" directory. Then, deployer can be configured to deploy the "assets" artifact from the bundle.
 
+Also note that this key must be a YAML string. Since YAML supports a JSON-like format for maps and lists, you must either quote the input:
+
+```yaml
+          artifacts: '{ "one": "path/to/file.md", "two": "path/to/file2.md" }'
+```
+
+or make use of YAML multiline strings:
+
+```yaml
+          artifacts: |
+            {
+              "one": "path/to/file.md",
+              "two": "path/to/file2.md"
+            }
+```
+
+The following will **NOT** work:
+
+```yaml
+          artifacts: { "one": "path/to/file.md", "two": "path/to/file2.md" } # FAILS, since YAML interprets this is a map.
+```
+
 ### `deploy_url`
 
 OPTIONAL. Your Forge Deployment Trigger URL.
